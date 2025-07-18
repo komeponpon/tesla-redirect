@@ -1,4 +1,4 @@
-import type {VercelRequest, VercelResponse} from "@vercel/node"
+import type { VercelRequest, VercelResponse } from "@vercel/node"
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
   const { code, state } = req.query;
@@ -8,9 +8,8 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
     return;
   }
 
-  const redirectUri = `myapp://auth?code=${encodeURIComponent(code)}${
-    state && typeof state === "string" ? `&state=${encodeURIComponent(state)}` : ""
-  }`;
-  res.writeHead(302, {Location: redirectUri});
+  const redirectUri = `teslapowerwallcontrol://auth?code=${encodeURIComponent(code)}${state && typeof state === "string" ? `&state=${encodeURIComponent(state)}` : ""
+    }`;
+  res.writeHead(302, { Location: redirectUri });
   res.end();
 }
